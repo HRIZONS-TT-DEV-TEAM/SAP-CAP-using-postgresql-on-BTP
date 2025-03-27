@@ -1,1 +1,1 @@
-# SAP-CAP-using-prosygresql-on-BTP
+# SAP-CAP-using-postgresql-on-BTP
