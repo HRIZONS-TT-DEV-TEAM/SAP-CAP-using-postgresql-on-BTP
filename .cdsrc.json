@@ -3,6 +3,12 @@
     "db": {
       "kind": "postgres",
       "impl": "@cap-js/postgres",
+      "pool": {
+            "max": 10,
+            "min": 0,
+            "acquire": 30000,
+            "idle": 10000
+          },
       "credentials": {
         "host": "localhost",
         "port": 5432,
