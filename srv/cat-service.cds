@@ -23,14 +23,37 @@ service CatalogService @(path: '/catalog') {
     };
 
   @requires: 'authenticated-user'
-  action submitOrder(book : Books:ID @mandatory,
+  action submitOrder(book : Integer @mandatory,
                      quantity : Integer @mandatory
-  ) returns {
+  )                                  returns {
     stock : Integer
   };
 
+  @requires: 'authenticated-user'
+  action updateBook(ID : Integer @mandatory,
+                    title : String,
+                    descr : String,
+                    stock : Integer,
+                    price : Decimal,
+                    currency_code : String,
+                    author : String) returns {
+    message : String
+  };
+
+  @requires: 'authenticated-user'
+  action addBook(title : String @mandatory,
+                 descr : String,
+                 stock : Integer @mandatory,
+                 price : Decimal @mandatory,
+                 currency_code : String @mandatory,
+                 author : String @mandatory
+  )                                  returns {
+    ID      : Integer;
+    message : String
+  };
+
   event OrderedBook : {
-    book     : Books:ID;
+    book     : Integer;
     quantity : Integer;
     buyer    : String
   };
